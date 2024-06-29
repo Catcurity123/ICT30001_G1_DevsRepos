@@ -1,21 +1,41 @@
 name: Test CI Flow
 
 on:
-    push:
-      branches: 
-        - main
-    workflow_dispatch: {}
+  push:
+    branches: 
+      - main
+  workflow_dispatch: {}
 
 jobs:
-    test-image:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v4
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
         
-        - name: Build and push test Docker image
-          working-directory: ./Application/App3/Docker
-          run: |
-            docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-test
-            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
-            docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-test 
-    
+      - name: Build and push test Docker image
+        working-directory: ./Application/App3/Docker
+        run: |
+          docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-test:${{ github.sha }}
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
+          docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-test:${{ github.sha }}
+
+  update-manifest:
+    runs-on: ubuntu-latest
+    needs: build-image
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Update Image Tag Values
+        run: |
+          deployment_file="../k8s/deployment.yaml"  
+          new_image_tag=${{ github.sha }}
+          sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
+
+      - name: Commit the changes made
+        run: | 
+          git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+          git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git commit -am "Updating image tag in deployment.yaml"
+          git push
