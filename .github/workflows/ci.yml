@@ -29,7 +29,7 @@ jobs:
 
       - name: Update Image Tag Values
         run: |
-          deployment_file="../../k8s/deployment.yaml"  
+          deployment_file="./k8s/deployment.yaml"  
           new_image_tag=${{ github.sha }}
           sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
 
