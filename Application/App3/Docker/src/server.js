@@ -28,7 +28,7 @@ const CONTACTS = [
 
 // Root route
 app.get('/', (req, res) => {
-    res.send('Welcome to the Contacts API! Checking Sync');
+    res.send('Welcome to the Contacts API! Checking Sync again nha');
 });
 
 app.get('/contacts', (req, res) => {
