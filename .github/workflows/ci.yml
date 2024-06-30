@@ -35,6 +35,14 @@ jobs:
           # Update the deployment.yaml file with the new image tag
           sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
 
+      - name: Update Image Tag Values
+        run: |
+            deployment_file="./k8s_local/deployment.yaml"  # Update with the actual path to your deployment.yaml
+            new_image_tag=${{ github.sha }}
+  
+            # Update the deployment.yaml file with the new image tag
+            sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
+
       - name: Commit the changes made
         run: | 
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
