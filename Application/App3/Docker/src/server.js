@@ -28,7 +28,7 @@ const CONTACTS = [
 
 // Root route
 app.get('/', (req, res) => {
-    res.send('Welcome to the Contacts API! From Saturday');
+    res.send('Welcome to the Contacts API! From Mexer 5');
 });
 
 app.get('/contacts', (req, res) => {
