@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: tn-app-server
-          image: dixluwn/ict30001-mexer:a98d8f357064822025a73d8b52b0e5f510b1cb42
+          image: dixluwn/ict30001-mexer:e0a67c9c5c54a5135ec2d92ac8e3f95f21a5bb2a
           ports:
             - containerPort: 80
