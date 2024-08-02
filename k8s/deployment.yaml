@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: app-server
-          image: dixluwn/ict30001-test:84178e921fc320ca806f9a5fea178630ea890a32
+          image: dixluwn/ict30001-tn-coffee:84178e921fc320ca806f9a5fea178630ea890a32
           ports:
             - containerPort: 80

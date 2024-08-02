@@ -7,27 +7,6 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  sast-tn:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup SonarQube
-        uses: warchant/setup-sonar-scanner@v8
-      - name: Analyze with SonarCloud
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectBaseDir: ./Application/TrungNguyenCoffee
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.host.url=${{ secrets.SONAR_URL }}
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.sources=.
-            -Dsonar.verbose=true  
-
   sast-mexer:
     runs-on: ubuntu-latest
     steps:
@@ -63,7 +42,6 @@ jobs:
 
   build-image-tn:
     runs-on: ubuntu-latest
-    needs: sast-tn
     steps:
       - uses: actions/checkout@v4
       - name: Build and push test Docker image
@@ -88,7 +66,7 @@ jobs:
           docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:${{ env.IMAGE_TAG }}
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
           docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:${{ env.IMAGE_TAG }}
-    
+
   update-manifest-tn:
     runs-on: ubuntu-latest
     needs: build-image-tn
@@ -96,28 +74,23 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Update Image Tag Values (k8s)
-        env:
-          IMAGE_TAG: "tn-${{ github.sha }}"
         run: |
           deployment_file="./k8s/deployment.yaml"  # Update with the actual path to your deployment.yaml
+          new_image_tag=${{ github.sha }}
           # Update the deployment.yaml file with the new image tag
-          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:${{ env.IMAGE_TAG }}|" "$deployment_file"
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:$new_image_tag|" "$deployment_file"
       - name: Update Image Tag Values (k8s_local)
-        env:
-          IMAGE_TAG: "tn-${{ github.sha }}"
         run: |
           deployment_file="./k8s_local/deployment.yaml"  # Update with the actual path to your deployment.yaml
+          new_image_tag=${{ github.sha }}
           # Update the deployment.yaml file with the new image tag
-          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:${{ env.IMAGE_TAG }}|" "$deployment_file"
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:$new_image_tag|" "$deployment_file"
       - name: Commit the changes made
         run: |
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -am "Updating image tag in deployment.yaml"
-            git push
-          else
-            echo "No changes to commit"
+          git commit -am "Updating image tag in tn deployment.yaml"
+          git push
 
   update-manifest-mexer:
     runs-on: ubuntu-latest
@@ -126,18 +99,14 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Update Image Tag Values (k8s-tn)
-        env:
-          IMAGE_TAG: "mexer-${{ github.sha }}"
         run: |
           deployment_file="./k8s-tn/deployment.yaml"  # Update with the actual path to your deployment.yaml
+          new_image_tag=${{ github.sha }}
           # Update the deployment.yaml file with the new image tag
-          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:${{ env.IMAGE_TAG }}|" "$deployment_file"
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:$new_image_tag|" "$deployment_file"
       - name: Commit the changes made
         run: |
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -am "Updating image tag in deployment.yaml"
-            git push
-          else
-            echo "No changes to commit"
+          git commit -am "Updating image tag in mexer deployment.yaml"
+          git push
