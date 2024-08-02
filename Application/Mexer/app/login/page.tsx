@@ -35,7 +35,7 @@ const Login = () => {
               />
             </div>
             <div className='text-bold'>
-              <h3>Xin chào!</h3>
+              <h3>Xin chào from ICT!</h3>
             </div>
             <NextUIProvider>
               <LoginForm />
