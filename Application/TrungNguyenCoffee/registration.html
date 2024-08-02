@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/register_validate.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+                
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<meta charset="utf-8" />	
+	<meta name="description" content="Project 2" />
+	<meta name="keywords"    content="Registration Form" />
+	<meta name="author"      content="Nguyen Linh Dan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <div class="fullbackground">
+    <div class="overlay"></div>
+        
+        
+    <!-- Navigation Bar -->
+    <header>
+        <img src="img/white%20logo%20no%20bg.png" class="logo" alt="logo">
+        <div class="menu-toggle"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="registration.html"  class="active">REGISTRATION</a></li>
+                <li><a href="order.html">ORDER NOW</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    <script>
+        $(document).ready(function(){
+            $('.menu-toggle').click(function(){
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+     
+    <!-- REGISTER -->
+    <div class="register_container_main">
+    <div class="register_container">
+        <div class="register_img"></div>
+        
+        <div id="registerForm">
+            <form id="survey" method="post" action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php">
+                
+                <h2>REGISTRATION FORM</h2>
+                <div class="inputBox">
+                    <label class="form_label">Full Name</label>
+                    <input id="fullname" class="form_input" type="text" name="Name">
+                </div>
+
+                <div class="inputBox">
+                    <label class="form_label">Username</label>
+                    <input id="username" class="form_input" type="text" name="Username" >
+                </div>
+
+                <div class="inputBox">
+                    <label class="form_label">Password</label>
+                    <input id="password" class="form_input" type="password" name="Password">
+                </div>
+
+                <div class="inputBox">
+                    <label class="form_label">Retype Password</label>
+                    <input id="password2" class="form_input" type="password" name="Retype" >
+                </div>
+
+                <div class="inputBox">
+                    <label class="form_label">Email</label>
+                    <input id="email" class="form_input" type="text" name="Email">  
+                </div> 
+                
+                <div class="inputBox">
+                    <label class="form_label">Postcode</label>
+                    <input id="postcode" class="form_input" type="text" name="Postcode">  
+                </div>
+
+                <div class="checkBox">
+                    <label>Gender</label>
+                    <input id="genm" class="checkBox_item" type="radio" name="Gender" value="Male"/> Male
+                    <input id="genf" class="checkBox_item" type="radio" name="Gender" value="Female"/>Female
+                </div>
+
+                <div class="inputBox">
+                    <label>Your Favorite Coffee</label>
+                    <select name="Favorite" class="select_tacos">
+                        <option value="Carne Asada" >Hot Express</option>
+                        <option value="Shrimp Tacos" >Creative Coffee</option>
+                        <option value="Barbacoa" >L'amour</option>
+                        <option value="Tacos de Birria" >Mother Land</option>
+                        <option value="Tinga Tacos" >Milk Express</option>
+                        <option value="Carnitas" >Other tea</option> 
+                    </select>
+                </div>
+
+            <!-- Submit and Reset button-->      
+                <div class="register_button">
+                    <input type="submit" value="Submit" /> &emsp;
+                    <input type="reset" value="Reset" /> 
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+    

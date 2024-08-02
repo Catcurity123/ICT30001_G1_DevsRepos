@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />	
+	<meta name="description" content="Web development" />
+	<meta name="keywords"    content="Order Form" />
+	<meta name="author"      content="Nguyen Linh Dan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Order Form</title>
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/validate.css">
+    <script src="js/order_validate.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">       
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="fullbackground">
+    <div class="overlay"></div>
+        
+        
+        <!-- Navigation Bar -->
+        <header>
+            <img src="img/white%20logo%20no%20bg.png" class="logo" alt="logo">
+            <div class="menu-toggle"></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a href="registration.html"  >REGISTRATION</a></li>
+                    <li><a href="order.html" class="active">ORDER NOW</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        <script>
+            $(document).ready(function(){
+                $('.menu-toggle').click(function(){
+                    $('.menu-toggle').toggleClass('active')
+                    $('nav').toggleClass('active')
+                })
+            })
+        </script>
+    
+    <!-- Order Form -->
+    <div id="orderForm">
+            <form id="survey" method="post" action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php">
+                <h2>DRINK ORDER</h2>
+                
+                
+                <div class="checkBox transport">
+                    <label>Delivery or pick-up?</label>
+                    <input id="delivery" class="checkBox_item" type="radio" name="Transport" value="Delivery"/> Delivery
+                    <input id="pickup" class="checkBox_item" type="radio" name="Transport" value="Pickup"/>Pick-up
+                </div>
+                
+                <div id="hidden1">
+                <div class="inputBox">
+                    <label class="order_label">Your delivery address:</label>
+                    <input id="addr" class="form_input" type="text" name="Location" >
+                </div>
+                
+                <div class="checkBox">
+                    <input id="check_address" class="checkBox_item" type="checkbox" name="SameAddress" value="True"/> Billing address same as delivery address
+                    <div id="message">
+                        <p>Please enter your delivery address first</p>
+                    </div>    
+                </div>
+                </div>
+                
+                <div class="inputBox">
+                    <label class="order_label">Your billing address:</label>
+                    <input id="billaddr" class="form_input" type="text" name="Bill">
+                </div>
+
+                <div class="inputBox">
+                    <label class="order_label">Your contact number:</label>
+                    <input id="phone" class="form_input" type="tel" name="Phone">
+                </div>
+
+                <div class="inputBox">
+                    <label class="order_label">Email for receipt:</label>
+                    <input id="email_receipt" class="form_input" type="text" name="Email" >
+                </div>
+
+                <div class="checkBox transport">
+                    <label>Pay on pick-up or online:</label>
+                    <input id="pay_pickup" class="checkBox_item" type="radio" name="Payment" value="Pickup"/> Pick-up
+                    <input id="pay_online" class="checkBox_item" type="radio" name="Payment" value="Online"/>Online
+                </div>
+                
+                <div id="hidden2">
+                    <div class="checkBox transport">
+                        <label>Choose your credit card:</label>
+                        <input id="visa" class="checkBox_item" type="radio" name="CreditCard" value="Visa"/> Visa
+                        <input id="mastercard" class="checkBox_item" type="radio" name="CreditCard" value="Mastercard"/>Mastercard
+                        <input id="express" class="checkBox_item" type="radio" name="CreditCard" value="Express"/>American Express
+                    </div>
+
+                    <div class="inputBox">
+                        <label class="order_label">Enter your credit card number:</label>
+                        <input id="cardNum" class="form_input credit" type="text" name="CardNum" > 
+                    </div> 
+                </div>
+
+                
+            <!-- Submit and Reset button-->      
+                <div class="order_button">
+                    <input type="submit" value="Submit" /> &emsp;
+                    <input id="reset" type="reset" value="Reset" /> 
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

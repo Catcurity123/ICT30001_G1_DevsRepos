@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+                
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<meta charset="utf-8" />	
+	<meta name="description" content="Project 2" />
+	<meta name="keywords"    content="Homepage" />
+	<meta name="author"      content="Nguyen Linh Dan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <img src="img/white%20logo%20no%20bg.png" class="logo" alt="logo">
+        <div class="menu-toggle"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">HOME SWE40006</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="registration.html">REGISTRATION</a></li>
+                <li><a href="order.html">ORDER NOW</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    
+    <script>
+        $(document).ready(function(){
+            $('.menu-toggle').click(function(){
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+    
+    <!-- SlideShow-->
+    <div class="container_slide"></div>
+    
+    <!-- Welcome-->
+    <main>
+        <div class="welcome_box">
+            <img src="img/welcome_nobg.png" class="welcome_img" alt="welcome">
+            <div class="welcome_caption">
+                <h2>WELCOME</h2>
+                <p>Let Trung Nguyen start your new journey!<br> <i>Discover the Essence of Vietnam <br/> in Every Sip</i></p>
+            </div>
+        </div>
+
+        <!-- About Us -->
+        <div class="about_box">
+            <div class="about_caption">
+                <h2>ABOUT US</h2>
+                <p>
+                    Founded in 1996 in Ho Chi Minh City, Trung Nguyen Coffee has grown to become one of Vietnam's leading coffee companies, exporting its premium coffee blends to over 60 countries worldwide while continuously innovating within the country's vibrant coffee culture.
+                </p>
+            </div>
+            <img src="img/aboutus.png" class="about_img" alt="About us">
+        </div>
+
+        <!--Quote-->
+        <div class="quote">
+                    <img src="img/quotation.png" class="quotation_open" alt="Quotation">
+                    <p>A passion to serve</p>
+                    <img src="img/quotation2.png" class="quotation_close" alt="Quotation">
+
+        </div>
+
+        <!-- Our Location -->
+        <div class="locationTitle">
+            <h2>OUR LOCATION</h2>
+        </div>
+        <div class="container_location">
+            
+                <div class="locationImg">
+                    <img src="img/location.jpg" alt="location">
+                </div>
+              
+            <div class="locationInfo">
+                <div class="box">
+                    <div class="icon_location"><i class="fa fa-map-marker" aria-hidden="true"></i></div> 
+                    <div class="text">
+                        <h2>Address</h2> 
+                        <ul>
+                            <li>02 Bui Thi Xuan, District 1, HCMC </li>
+                            <li>12 Alexadre de Rhodes, Ben nghe Ward, District 1</li>
+                            <li>HA 01 – 59 Vinhomes Ocean Park, Gia Lam, Hanoi</li>
+                        </ul>
+                    </div>  
+                </div>
+
+                <div class="box">
+                    <div class="icon_location"><i class="fa fa-calendar" aria-hidden="true"></i></div> 
+                    <div class="text">
+                        <h2>Opening Hours</h2>
+                        <ul>
+                            <li>Sat - Sun: 7AM - 10PM</li>
+                            <li>Mon - Fri: 6AM - 10PM</li>
+                            <li>Holiday: 24/24</li>
+                        </ul>
+                    </div>  
+                </div>
+
+                <div class="box">
+                    <div class="icon_location"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <div class="text">
+                        <h2>Phone</h2> 
+                        <ul>
+                            <li>HCM Stores: 0123 456 789</li>
+                            <li>Hanoi Stores: 0541 539 175</li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <!--Slogan-->
+        <div class="slogan">
+            <img src="img/slogan_nobg.png" alt="slogan">
+        </div>
+
+        <!--Food and Drinks-->
+        <div class="menuTitle"><h2>TRUNG NGUYEN's MENU</h2></div>
+        <div class="layout-menu">
+            <div class="layout-menu_item menu_item1">
+                <h3>ENERGY COFFEE</h3>
+            </div>
+            <div class="layout-menu_item menu_item2">
+                <h3>FRESH DRINKS</h3>
+            </div>
+            <div class="layout-menu_item menu_item3">
+                <h3>HEALTHY BREAKFAST</h3>
+            </div>
+        </div>
+        <div id="menu_button">
+            <a href="menu.html">See Full Menu</a>
+        </div>
+
+        <!--Slogan 2-->
+        <div class="slogan2">
+            <img src="img/inspired_nobg.png" alt="slogan">
+        </div>
+
+        <!--Become Member and Order Online section-->
+        <div class="layout-section">
+            <div class="layout-section_item section_item1">
+                    <img src="img/register.png" alt="register">
+                <div class="section_content">
+                    <h2>Become Our Member</h2>
+                    <a href="registration.html">Register</a>
+                </div>
+            </div>
+
+            <div class="layout-section_item section_item2">
+                    <img src="img/order.png" alt="order_online"> 
+                <div class="section_content">
+                    <h2>Order Online</h2>
+                    <a href="order.html">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--Footer-->
+    <footer>
+        <div class="footer_container">
+            <img src="img/white%20logo%20no%20bg.png" class="footer_logo" alt="logo">
+            <div class="footer_location">
+                <p>TRUNG NGUYEN COFFEE</p>
+                <p>02 Bui Thi Xuan, District 1, HCMC</p>
+                <p>0123 456 789</p>
+            </div>
+            <div class="footer_nav">
+            <ul>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="registration.html">REGISTRATION</a></li>
+                <li><a href="order.html">ORDER NOW</a></li>
+            </ul>
+            </div>
+            <div class="footer_socialmedia">
+                <div class="icon_location"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                <div class="icon_location"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                <div class="icon_location"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

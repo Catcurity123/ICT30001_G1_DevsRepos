@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ffffff;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.main {
+  width: 100vw;
+  background-image: url('/assets/images/LoginBackground.jpeg');
+  background-size: cover;  /* Cover the entire space of the element */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
+}
+
+.home-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  padding: 20px; /* Add padding to prevent content from touching the edges */
+  box-sizing: border-box; /* Include padding in width and height calculations */
+}
+
+/* Container for the login card */
+.login-card {
+  width: 50vw; /* Set width to 50% of the viewport width */
+  height: auto;
+  aspect-ratio: 1030 / 620; /* Maintain aspect ratio based on original width and height */
+  background-color: white;
+  border-radius: 40px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Padding increased to 40px */
+  box-sizing: border-box; /* Include padding and border in the box model calculation */
+  display: flex;
+  justify-content: space-between; /* Distribute space between children */
+  align-items: center; /* Align children vertically */
+}
+
+/* Styling for the login image */
+.login-image {
+  flex: 0 0 50%; /* Does not grow or shrink, occupies 50% of the parent's width */
+  max-width: 540px; /* Maximum width is half of the login-card's max-width */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  height: auto; /* Height is automatic, maintaining aspect ratio */
+}
+
+/* Styling for the login form */
+.login-form {
+  max-width: auto;
+  flex: 1; /* Takes the remaining space */
+  padding: 0 0 0 40px; /* Padding inside the form */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the form fields vertically */
+  align-items: start; /* Align form fields to the start (left) */
+}
+
+.login-form-container {
+  width: 100%; /* Responsive width */
+  max-width: 370px; /* Maximum width for better control on larger screens */
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-logo {
+  display: flex;
+  justify-content: start; /* Center logos horizontally */
+  align-items: center; /* Center logos vertically */
+  gap: 10px; /* Space between logos */
+  margin-bottom: 20px; /* Space below the logo section */
+}
+
+.app {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.text-bold {
+  font-size: 40px;
+  font-weight: 650;
+  color: black;
+}
+
+.login-input{
+  margin-bottom: 20px;
+}
+
+.login-button{
+  background-color: #4880FF;
+  color: white;
+}
+
+/* NAVBAR SECTION */
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar,
+.subnav {
+  flex-shrink: 0;
+}
+
+.sidebar {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 10px;
+  border-right: 1.5px solid #cdcdc959;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.234);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-top {
+  display: flex;
+  align-content: center;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.sidebar-logo {
+  height: 20px;
+  margin-right: 45px;
+}
+
+.sidebar-list {
+  flex-grow: 1;
+  margin: 0 10px 0 10px;
+}
+
+.sidebar-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #9B9A95;
+  padding: 10px;
+  display: flex;
+  background-color: #fff;
+  margin-left: 2px;
+  border-radius: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.sidebar-link:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar-icon {
+  font-size: 27px;
+  display: inline-block;
+}
+
+.sidebar-name {
+  font-size: 15px;
+  margin-left: 0.5rem;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.collapse-btn {
+  display: inline-block;
+  display: flex;
+  cursor: pointer;
+  margin-left: 11px;
+}
+
+.sidebar-bottom {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.8rem;
+}
+
+.user-content {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.user-trigger {
+  display: flex;
+  justify-content: start;
+  padding: 10;
+  border-radius: 8px;
+}
+
+.user-trigger .custom-user-name,
+text-inherit {
+  font-weight: bold;
+  color: #333;
+}
+
+
+.user-trigger:hover {
+  background-color: #f0f0f0;
+}
+
+.user-name {
+  white-space: nowrap;
+  margin-left: 15px;
+}
+
+.user-avatar {
+  padding: 10;
+}
+
+[data-collapse='true'] {
+  width: 90px;
+}
+
+[data-collapse='true'] .sidebar-name,
+[data-collapse='true'] .sidebar-logo,
+[data-collapse='true'] .user-trigger .custom-user-name,
+[data-collapse='true'] .user-trigger .custom-user-description {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-collapse='true'] .user-trigger {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+[data-collapse='true'] .collapse-button {
+  rotate: 180deg;
+}
+
+.sidebar-item.active .sidebar-link {
+  background-color: #E7F0FF;
+  font-weight: bold;
+  color: #396DBD;
+}
+
+hr {
+
+  margin: 5px 0;
+  /* Adjust spacing as needed */
+}
+
+.subnav {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.subnav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subnav-item {
+  display: flex;
+  align-items: center;
+}
+
+.subnav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #9b9a95;
+  padding: 12px 8px;
+  margin: 4px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  border-radius: 16px;
+}
+
+.subnav-link:hover {
+  background-color: #CDCDC9;
+  color: #5C5A54;
+  font-weight: 650;
+}
+
+.subnav-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.subnav-name {
+  font-size: 16px;
+  padding-left: 8px;
+}
+
+.subnav-item.active .subnav-link {
+  background-color: #e7f0ff;
+  color: #396dbd;
+  font-weight: bold;
+}
+
+.profile-layout {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.profile-header {
+  font-size: 30px;
+  font-weight: 800;
+  width: 90vw;
+  max-width: 1500px;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  margin: 20px auto 10px auto;
+}
+
+.profile-frame {
+  background-color: #fff;
+  border-radius: 40px;
+  width: 90vw;
+  max-width: 1500px;
+  height: 80vh;
+  max-height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.sub-sidebar {
+  height: 100%;
+}
+
+.profile-content {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  padding: 30px;
+  margin: 50px 100px;
+}
+

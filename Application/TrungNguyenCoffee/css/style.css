@@ -1,0 +1,1035 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height:100vh;
+    box-sizing: border-box;
+    background: #f3f3f3;
+}
+
+/* NAVIGATION BAR */
+
+header {
+    position: relative;
+    width: 100%;
+    background: #49111C;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 180px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    float: left;
+}
+
+nav {
+    float: right;
+    margin-right: 20px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    display: block;
+    margin: 30px 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    background: #290B11;
+    transition: 0.5s
+}
+
+/* PAGE 1 - INDEX PAGE */
+/* -------------------------------------------*/
+/* slideshow */
+.container_slide {
+    position: relative;
+    width:100%;
+    height: 50vh;
+    background: url('../img/slide1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* welcome box */
+
+.welcome_box {
+    margin-top: 40px;
+    display: flex;   
+}
+
+.welcome_box .welcome_caption {
+    margin: auto;
+    text-align: center;
+}
+
+.welcome_box .welcome_caption h2, .about_box .about_caption h2, .locationTitle h2, .menuTitle h2, .section_content h2 {   /* set special font for all headings */
+    font-family: 'Coiny', cursive;
+    font-size: 40px;
+    font-weight: 700;
+    color: #49111C;
+}
+
+.welcome_box .welcome_caption p, .about_box .about_caption p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.welcome_box .welcome_img {
+    display: flex;
+    margin: auto;
+    width: 35%;
+}
+
+/* about box */
+
+.about_box {
+    padding: 20px;
+    display: flex;
+}
+
+.about_box .about_caption {
+    margin: auto;
+    padding-right: 10px;
+    width: 40%;
+}
+
+.about_box .about_img {
+    display: flex;
+    margin: auto;
+    width: 30%;
+}
+
+/* quote: "A passion to serve" */
+.quote {
+    display: flex;
+    width: 100%;
+    background: #49111C;
+}
+
+.quotation_open {   /*quotation mark */
+    margin: auto;
+    width: 5%;
+    height: 5%;
+}
+
+.quotation_close {  /*quotation mark */
+    margin: auto;
+    width: 5%;
+    height: 5%;
+}
+
+.quote p {
+    color: #fff;
+    font-size: 40px;
+    text-shadow: 3px 4px #a63f68;
+    letter-spacing: 5px;
+}
+
+
+/* our location box */
+
+.container_location {
+    width: 100%;
+    display:flex;
+    align-items: center;
+    background: #f3f3f3;
+}   
+
+.locationTitle {
+    width: 80%;
+    position: relative;
+    left: 5%;
+    background: #f3f3f3;
+}
+
+.container_location .locationInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.container_location .locationImg{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_location .locationImg img {
+    width:60%;
+    margin: auto;
+}
+
+.container_location .locationInfo .box {
+    display: flex;
+}
+
+.container_location .locationInfo .box .icon_location {
+    min-width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.container_location .locationInfo .box .text {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.container_location .locationInfo .box .text h2 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.container_location .locationInfo .box .text ul li {
+    margin: 10px;
+    margin-left: -70px;
+}
+
+/* slogan: "Mexican tacos - inspired" */
+
+.slogan {
+    display: flex;
+    margin: auto;
+    background: #f3f3f3;
+}
+
+.slogan img {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+/* menu section: Food and Drinks */
+
+.menuTitle {
+    text-align: center;
+    background: #f3f3f3;
+}
+
+.layout-menu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #f3f3f3;
+}
+
+.layout-menu_item {
+    width:400px;
+    height: 400px;
+    font-size: 25px;
+    position: relative;
+    margin-top: 30px;
+    transition: 1s;
+}
+
+.layout-menu_item.menu_item1 {
+    background: url(../img/tacos.jpg);
+}
+
+.layout-menu_item:hover {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+.layout-menu_item h3 {
+    position: absolute;
+    bottom:-30px;
+    background: #49111C;
+    width:100%;
+    text-align: center;
+    font-size: 30px;
+    color:white;
+    font-weight: 300;
+}
+
+.layout-menu_item.menu_item2 {
+    background: url(../img/fries.jpg);
+    background-position: center;
+}
+
+.layout-menu_item.menu_item3 {
+    background: url(../img/drinks.jpg);
+    background-position: center;
+}
+
+#menu_button {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#menu_button a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #49111C;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 15px; 
+}
+
+#menu_button a:hover {
+    opacity: 0.8;
+}
+
+/* slogan "inspired" */
+
+.slogan2 {
+    display: flex;
+    background: #f3f3f3;
+}
+
+.slogan2 img {
+    width: 30%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* become our member and register section */
+
+.layout-section {
+    display: flex;
+    flex-wrap: wrap;
+    background: #f3f3f3;
+}
+
+.layout-section_item {
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    font-size: 25px;
+    position: relative;
+    margin: auto;
+}
+
+.layout-section_item img {
+    width:100%; 
+    margin-top: 30px;
+}
+
+.section_content {
+    flex-direction:column;
+    margin: auto;    
+}
+
+.section_content a {
+    padding: 10px 20px;
+    background: #49111C;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.section_content a:hover {
+    opacity: 0.8;
+}
+
+/* footer */
+.footer_container {
+    display: flex;
+    justify-content:space-between;
+    background: #49111C; 
+    color: white;
+}
+
+.footer_container .footer_logo {
+    width:200px;
+    height: 100px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    position: relative;
+    top: 30px;
+    left: 20px;
+}
+
+.footer_socialmedia {
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 40px;
+    margin-right: 30px;
+    font-size: 20px;
+}
+
+.footer_nav ul li {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    
+}
+.footer_nav ul li a {
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* PAGE 2 - FULL MENU PAGE */
+/* ----------------------- */
+
+/* Top heading */
+
+.fullmenu_title {
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.menu_inspired {
+    width: 100%;
+    display: flex;
+}
+
+.menu_inspired img {
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;  
+}
+
+.fullmenu_title img {
+    display: flex;
+    margin: auto;
+}
+
+/* Overall setting for the containers of menu items */
+
+.fullmenuTitle {
+    text-align: center;
+    font-family: 'Coiny', cursive;
+    font-size: 30px;
+    color: #49111C;
+}
+
+.fullmenu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #f3f3f3;
+    margin-bottom: 50px;
+}
+
+.fullmenu_item h3 {
+    position: absolute;
+    bottom:-30px;
+    background: #49111C;
+    width:100%;
+    text-align: center;
+    font-size: 30px;
+    color:white;
+    font-weight: 300;
+}
+
+.fullmenu_item {    /* width of each containers */
+    width:400px;
+    height: 400px;
+    font-size: 25px;
+    position: relative;
+    margin-top: 30px;
+    transition: 1s;
+    display: flex;
+}
+
+.price {    /* display price in circle containers */
+    position: absolute;
+    background: #49111C;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.fullmenu_item .price h4 {
+    display: flex;
+    margin: 16px 0;
+    color: #fff;
+    font-size: 22px;
+}
+
+/* Tacos menu */
+
+.fullmenu_item.tacos_item1 {
+    background: url(../img/carneasada.png);
+    background-position: center;
+}
+
+.fullmenu_item.tacos_item2 {
+    background: url(../img/shrimptacos.png);
+    background-position: center;
+}
+
+.fullmenu_item.tacos_item3 {
+    background: url(../img/barbacoa.png);
+    background-position: center;
+}
+
+.fullmenu_item.tacos_item4 {
+    background: url(../img/tingatacos.png);
+    background-position: center;
+}
+
+.fullmenu_item.tacos_item5 {
+    background: url(../img/campechanos.png);
+    background-position: center;
+}
+
+.fullmenu_item.tacos_item6 {
+    background: url(../img/tacosdepapa.png);
+    background-position: center;
+}
+
+/* Fries menu */
+
+.fullmenu_item.fries_item1 {
+    background: url(../img/chickenwings.png);
+    background-position: center;
+}
+
+.fullmenu_item.fries_item2 {
+    background: url(../img/fish%20and%20chip.jpg);
+    background-position: center;
+}
+
+.fullmenu_item.fries_item3 {
+    background: url(../img/curly%20fries.jpg);
+    background-position: center;
+}
+
+.fullmenu_item.fries_item4 {
+    background: url(../img/tra4.jpg);
+    background-position: center;
+}
+
+.fullmenu_item.fries_item5 {
+    background: url(../img/tra5.jpg);
+    background-position: center;
+}
+
+.fullmenu_item.fries_item6 {
+    background: url(../img/tra6.jpg);
+    background-position: center;
+}
+
+/* Drinks menu */
+
+.fullmenu_item.drinks_item1 {
+    background: url(../img/wine.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fullmenu_item.drinks_item2 {
+    background: url(../img/coke.jpg);
+    background-position:center;
+    background-size: cover;
+}
+
+.fullmenu_item.drinks_item3 {
+    background: url(../img/pepsi.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fullmenu_item.drinks_item4 {
+    background: url(../img/lemonade.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fullmenu_item.drinks_item5 {
+    background: url(../img/coffee.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.fullmenu_item.drinks_item6 {
+    background: url(../img/beer.jpg);
+    background-position: center;
+    background-size: cover;
+}
+ /* Effect for containers */
+.fullmenu_item:hover {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+
+/* BACKGROUND AND OVERLAY for ORDER PAGE AND REGISTRATION PAGE  */
+
+.fullbackground {
+    position: relative;
+    background: url(../img/slide1.jpg);
+    background-size:cover;
+    background-position: center;
+    min-height: 800px; 
+}
+
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+/* PAGE 3: REGISTRATION PAGE */
+/* -------------------------- */
+
+.register_container_main {
+    width: 100%;
+    display: flex;
+    position: relative;
+    top: 30px;
+}
+
+.register_container {
+    display: flex;
+    margin: auto;
+}
+
+.register_img { /* left image */
+    width: 400px;
+    background: url('../img/register_page.png');
+    background-size: cover;
+    background-position: center;
+    display: block;
+}
+
+#registerForm {
+    width:80%;
+    padding: 20px;
+    background: #49111C;
+    mix-blend-mode: hard-light; /*Transparent effect for the form container */
+}
+
+#registerForm h2, #orderForm h2 {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.inputBox, .checkBox, .submit_button {
+    position: relative;
+    width: 90%;
+    margin-top: 30px;
+    left: 50px;
+    color: white;
+}
+
+.inputBox {
+    display:flex;
+}
+
+.form_label {
+    min-width: 150px;
+}
+
+.form_input {   /* all input fields have the same width */
+    flex: 1;
+}
+
+.checkBox_item {
+    display: inline-flex;
+    margin-left: 100px 
+}
+
+.select_tacos {
+    margin-left: 40px;
+}
+
+.register_button {
+    display: flex;
+    justify-content:flex-end;
+}
+
+.register_button input, .order_button input:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.register_button input  {
+    padding: 7px 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: #000;
+    color: #fff;
+    box-shadow: 1px 1px #fff;
+}
+   
+/* PAGE 4: ORDER PAGE */
+/* ------------------- */
+
+#orderForm {
+    width: 80%;
+    margin: auto;
+    background: #49111C;
+    mix-blend-mode: hard-light;
+}
+
+#orderForm h2 {
+    letter-spacing: 5px;
+    padding-top: 10px;
+}
+
+.order_label {
+    min-width: 200px; 
+}
+
+.form_input {
+    flex: 0.8;
+}
+
+.checkBox.transport input {
+    display: flex;
+    display: inline-flex;
+    margin-left: 20px;
+}
+
+.form_input.credit {
+    margin-left: 20px;
+}
+
+.order_button {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order_button input {
+    padding: 7px 10px;
+    margin: 15px 10px 5px;
+    background: #000;
+    color: #fff;
+    box-shadow: 1px 1px #fff;
+}
+
+input[type=text]:focus , input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus /* change fields color when clicking */
+{
+    background-color:#fcaeba;
+}
+
+/* PAGE 5: FEATURE LIST */
+/*-------------------------*/
+
+#featureTitle {
+    font-family: 'Coiny', cursive;
+    font-size: 50px;
+    color: #49111C;
+    text-align: center;
+}
+
+.featureList {
+    display: flex;
+    flex-direction: column;
+}
+
+.featureItem {
+    width: 80%;
+    display: flex;
+    margin:auto;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+aside { /* left image */
+    width: 200px;
+    background: url('../img/register_page.png');
+    background-size: cover;
+    background-position: center;
+    display: block;
+}
+
+.feature_content {
+    width:100%;
+    padding: 0 20px 15px 20px;
+    background: #49111C;
+    color: white;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+.feature_content article a {
+    text-decoration: none;
+    color: white;
+    background: #000;
+    padding: 5px;
+    border-radius: 5%;
+    border: 1px solid #f3f3f3;
+}
+
+.footer_container.featurepage {
+    margin-top: 50px;
+}
+/* RESPONSIVE VERSION 1 */
+@media  (max-width: 910px) {
+    
+/* RESPONSIVE NAVIGATION BAR */   
+    .menu-toggle {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: none;
+        float:right;
+        cursor: pointer;
+        text-align: center;
+        font-size: 30px;
+        color: black;
+        margin: 25px;
+    }
+    
+    .menu-toggle:before {
+        content: '\f0c9';
+        font-family: fontAwesome;
+        line-height: 40px;
+        color: #fff;
+    }
+    
+    .menu-toggle.active:before {
+        content: '\f00d';
+    }
+    
+    nav {
+        display: none;
+        margin: 0;
+    }
+    
+    nav.active {
+        display:block;
+        width: 100%;
+    }
+    
+    nav.active ul {
+        display: block;
+    }
+    
+    nav.active ul li a {
+        margin: 0;
+    }
+
+    .logo {
+        width: 200px;
+    }
+    
+    
+    /* PAGE 1: RESPONSIVE HOMEPAGE */ 
+    
+    /* Responsive welcome box */ 
+    .welcome_box .welcome_caption h2, .about_box .about_caption h2, .locationTitle h2, .menuTitle h2, .section_content h2 {
+        font-size: 150%;    /* increase size of all headings */
+    }
+
+    .welcome_box .welcome_caption p, .about_box .about_caption p {
+        font-size: 100%;
+    }
+    
+    /* Responsive about box */
+    .about_box .about_caption p {
+        width: 80%;
+        margin-bottom: 60px;
+    }
+    
+    .about_box {
+        flex-direction: column;
+    }
+    
+    .about_box .about_caption {
+        margin: auto;
+        padding-right: 10px;
+        width: 100%;
+    }
+    
+    /* Responsive quote: "A passion to serve" */
+    .quote p {
+        font-size: 150%;
+    }
+    
+    /* Responsive location box */
+    .container_location {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .container_location .locationInfo .box {
+        width:60%;
+        margin: auto;
+    }
+    
+    .container_location .locationInfo .box .text h2 {
+        font-size: 100%;
+    }
+    
+    .container_location .locationInfo .box .text ul li {
+        font-size: 90%;
+    }
+    
+    .container_location .locationImg a {
+        font-size: 90%;
+        padding: 5px 10px;
+    }
+    
+    /* Responsive menu section: Food and Drinks */
+
+    .layout-menu_item {
+        width: 300px;
+        height: 300px;
+    }
+    .layout-menu_item h3 {
+        font-size: 20px;
+        padding: 5px 0px;
+    }
+    
+    /* Responsive Become our member and Register */
+    
+    .layout-section_item {
+        width:400px;
+        font-size: 100%;
+        position: relative;
+        margin: auto;
+    }
+
+    .layout-section_item img {
+        width:100%; 
+        margin-top: 30px;
+    }
+
+    
+    /* Responsive footer */
+    
+    .footer_container {
+        font-size: 70%;
+    }
+    
+    .footer_socialmedia {
+        flex-direction: column;
+        margin: 0;
+        font-size: 120%;
+    }
+    
+    .footer_container .footer_logo {
+        width:150px;
+        height: 60px;
+        padding: 5px 20px;
+        margin-top: 20px;
+        box-sizing: border-box;
+        position: relative;
+        top: 0;  
+    }
+    
+    /* PAGE 2: RESPONSIVE FULL MENU PAGE */
+    .menu_inspired img {
+        width: 50%;
+    }
+    
+    .fullmenu_item {
+        width:300px;
+        height: 300px;
+    }
+ 
+    /* RESPONSIVE BACKGROUND AND OVERLAY for ORDER PAGE AND REGISTRATION PAGE  */
+    
+    .fullbackground {
+       height: 1000px; 
+    }
+    
+    .overlay {
+        height: 1000px; 
+    }
+    
+    /* PAGE 3: RESPONSIVE REGISTRATION PAGE */
+    
+    #registerForm .inputBox, #registerForm .checkBox, #registerForm .submit_button {
+        left:20px;
+    }
+
+    
+    /* PAGE 4: ORDER PAGE */
+    #orderForm {
+        width: 95%;
+        font-size: 80%;
+    }
+    
+    .order_label {
+        min-width: 150px; 
+    }
+    
+    .checkBox_item {
+        margin-left: 30px;
+    }
+    
+    .checkBox.transport {
+        display: flex;
+    }
+    
+    /* PAGE 5: FEATURES PAGE */
+    
+    #featureTitle {
+        font-size: 35px;
+    }
+    
+    .feature_img { /* left image */
+        width: 150px;
+    }
+
+    .feature_content {
+        font-size: 70%;
+    }
+
+}
+    
+/* RESPONSIVE VERSION 2 */   
+@media  (max-width: 780px) {
+    
+    /* RESPONSIVE REGISTRATION FORM 2 */
+     .register_container {
+        display: flex;
+    }
+    
+    .register_img {
+        visibility: hidden;
+    }
+    
+    #registerForm {
+        width: 100%;
+        position: relative;
+        left:-10px;
+    }
+    
+    .register_img {
+        width: 0;
+    }
+
+    /* RESPONSIVE ORDER FORM 2 */
+    .order_label {
+    min-width: 160px; 
+    }
+}

@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+
+    stages {
+        stage('Deploy') {
+            steps {
+                sshagent(credentials: ['Key-for-host']) {
+                    sh "ssh -o StrictHostKeyChecking=no -l root heyyytamvo.io.vn './mexer_frontend_deploy.sh'"
+                }
+            }
+        }
+    }
+}
+// pipeline {
+//     agent any
+
+//     stages {
+
+//         stage('Check Branch') {
+//             steps {
+//                 script {
+//                     def changedBranch = env.dev
+//                     if (changedBranch == 'dev') {
+//                         echo "Branch 'dev' has been changed. Proceeding with deployment."
+//                         stage('Deploy') {
+//                             steps {
+//                                 sshagent(credentials: ['Key-for-host']) {
+//                                     sh "ssh -o StrictHostKeyChecking=no -l root heyyytamvo.io.vn './mexer_frontend_deploy.sh'"
+//                                 }
+//                             }
+//                         }
+//                     } else {
+//                         echo "Branch '${changedBranch}' has not been changed. Skipping deployment."
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

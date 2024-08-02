@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Menu</title>
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">      
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<meta charset="utf-8" />	
+	<meta name="description" content="Project 2" />
+	<meta name="keywords"    content="Menu Page" />
+	<meta name="author"      content="Nguyen Linh Dan" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <header>
+        <img src="img/white%20logo%20no%20bg.png" class="logo" alt="logo">
+        <div class="menu-toggle"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="menu.html" class="active">MENU</a></li>
+                <li><a href="registration.html">REGISTRATION</a></li>
+                <li><a href="order.html">ORDER NOW</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    
+    <script>
+        $(document).ready(function(){
+            $('.menu-toggle').click(function(){
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+    <main>
+        <!-- MENU -->
+        <div class="fullmenu_title">
+            <img src="img/menu.png" alt="menu">
+        </div>
+
+        <!-- TACOS -->
+        <!--Food and Drinks-->
+        <div class="menu_inspired">
+            <img src="img/inspired_nobg.png" alt="inspired">
+        </div>
+        
+        <section>
+            <div class="fullmenuTitle"><h2>WORLD OF ENERGY COFFEE</h2></div>
+            <div class="fullmenu">
+                    <div class="fullmenu_item tacos_item1">
+                        <h3>L’amour Coffee</h3>
+                        <div class="price">
+                            <h4>$ 2.30</h4>
+                        </div>
+                    </div>
+
+                    <div class="fullmenu_item tacos_item2">
+                        <h3>Mother Land (hot) Coffee</h3>
+                        <div class="price">
+                            <h4>$ 2.45</h4>
+                        </div>
+                    </div>
+
+                    <div class="fullmenu_item tacos_item3">
+                        <h3>Express</h3>
+                        <div class="price">
+                            <h4>$ 2.53</h4>
+                        </div>
+                    </div>
+
+                    <div class="fullmenu_item tacos_item4">
+                        <h3>Iced Milk Express</h3>
+                        <div class="price">
+                            <h4>$ 3.32</h4>
+                        </div>
+                    </div>
+
+                    <div class="fullmenu_item tacos_item5">
+                        <h3>Creative Energy (Coffee)</h3>
+                        <div class="price">
+                            <h4>$ 2.97</h4>
+                        </div>
+                    </div>
+
+                    <div class="fullmenu_item tacos_item6">
+                        <h3>Iced Express</h3>
+                        <div class="price">
+                            <h4>$ 2.52</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+
+            <div class="menu_inspired">
+                <img src="img/inspired_nobg.png" alt="inspired">
+            </div>
+
+            <section>
+            <div class="fullmenuTitle"><h2>REFRESH YOUR BODY</h2></div>
+            <div class="fullmenu">
+                <div class="fullmenu_item fries_item1">
+                    <h3>Peach Tea & Lemon Grass</h3>
+                    <div class="price">
+                        <h4>$ 2.99</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item fries_item2">
+                    <h3>Yogurt</h3>
+                    <div class="price">
+                        <h4>$ 3.19</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item fries_item3">
+                    <h3>Caramel Macchiato</h3>
+                    <div class="price">
+                        <h4>$ 3.09</h4>
+                    </div>
+                </div>
+                <div class="fullmenu_item fries_item4">
+                    <h3>Lemon Ginger Chia</h3>
+                    <div class="price">
+                        <h4>$ 2.51</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item fries_item5">
+                    <h3>Golden Lotus tea</h3>
+                    <div class="price">
+                        <h4>$ 3.26</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item fries_item6">
+                    <h3>Milk Foam Tea</h3>
+                    <div class="price">
+                        <h4>$ 3.14</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="menu_inspired">
+            <img src="img/inspired_nobg.png" alt="inspired">
+        </div>
+        
+        <section>
+            <div class="fullmenuTitle"><h2>TIME FOR BREAKFAST</h2></div>
+            <div class="fullmenu">
+                <div class="fullmenu_item drinks_item1">
+                    <h3>Steak and Fried Eggs</h3>
+                    <div class="price">
+                        <h4>$ 3.99</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item drinks_item2">
+                    <h3>Meatball Sandwich</h3>
+                    <div class="price">
+                        <h4>$ 3.50</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item drinks_item3">
+                    <h3>Legend Breakfast</h3>
+                    <div class="price">
+                        <h4>$ 1.88</h4>
+                    </div>
+                </div>  
+
+                <div class="fullmenu_item drinks_item4">
+                    <h3>Croissant</h3>
+                    <div class="price">
+                        <h4>$ 2.32</h4>
+                    </div>
+                </div>
+
+                <div class="fullmenu_item drinks_item5">
+                    <h3>Vietnamese Pho</h3>
+                    <div class="price">
+                        <h4>$ 3.43</h4>
+                    </div>
+                </div>  
+
+                <div class="fullmenu_item drinks_item6">
+                    <h3>Banana Cake</h3>
+                    <div class="price">
+                        <h4>$ 2.50</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--Footer-->
+    <!--Footer-->
+    <footer>
+        <div class="footer_container">
+            <img src="img/white%20logo%20no%20bg.png" class="footer_logo" alt="logo">
+            <div class="footer_location">
+                <p>TRUNG NGUYEN COFFEE</p>
+                <p>02 Bui Thi Xuan, District 1, HCMC</p>
+                <p>0123 456 789</p>
+            </div>
+            <div class="footer_nav">
+            <ul>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="registration.html">REGISTRATION</a></li>
+                <li><a href="order.html">ORDER NOW</a></li>
+            </ul>
+            </div>
+            <div class="footer_socialmedia">
+                <div class="icon_location"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                <div class="icon_location"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                <div class="icon_location"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+#hidden1, #hidden2 {						
+    display: none;
+	position: relative;		
+	text-align: center;						
+}
+
+#hidden2 {
+    text-align: left;
+}
+
+#message {
+    display: none;
+    font-size: 12px;
+    color: red;
+}

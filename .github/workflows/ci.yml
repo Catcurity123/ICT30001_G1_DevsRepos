@@ -1,4 +1,4 @@
-name: Test CI Flow
+name: CI Flow
 
 on:
   push:
@@ -7,44 +7,123 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  test-image:
+  sast-tn:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
-      - name: Build and push test Docker image
-        working-directory: ./Application/App3/Docker
-        run: |
-          docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-test:${{ github.sha }}
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
-          docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-test:${{ github.sha }}
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v8
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: ./Application/TrungNguyenCoffee
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.host.url=${{ secrets.SONAR_URL }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.sources=.
+            -Dsonar.verbose=true  
 
-  update-manifest:
+  sast-mexer:
     runs-on: ubuntu-latest
-    needs: test-image
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v8
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: ./Application/Mexer
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.host.url=${{ secrets.SONAR_URL }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.sources=.
+            -Dsonar.verbose=true  
 
+  dast:
+    runs-on: ubuntu-latest
+    name: ZAP Scan
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Pull ZAP OWASP Image
+        run: docker pull zaproxy/zap-stable
+      - name: Run ZAP Scan
+        run: |
+          docker run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-baseline.py -t http://afab3d94224594309a7df96076bea4f9-1897058190.us-east-1.elb.amazonaws.com/index.html?fbclid=IwY2xjawETW6hleHRuA2FlbQIxMAABHTpuqipY0u6eJxe5zPCGCXmGW89PTF07H2LVv9SeVZp0KOTFfYfa13IRlg_aem_AdUsqKXOcb8HAlE0IccZ-A
+
+  build-image-tn:
+    runs-on: ubuntu-latest
+    needs: sast-tn
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push test Docker image
+        working-directory: ./Application/TrungNguyenCoffee
+        run: |
+          docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:${{ github.sha }}
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
+          docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:${{ github.sha }}
+
+  build-image-mexer:
+    runs-on: ubuntu-latest
+    needs: sast-mexer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push test Docker image
+        working-directory: ./Application/Mexer
+        run: |
+          docker build . -t ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:${{ github.sha }}
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
+          docker push ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:${{ github.sha }}
+    
+  update-manifest-tn:
+    runs-on: ubuntu-latest
+    needs: build-image-tn
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-
-      - name: Update Image Tag Values
+      - name: Update Image Tag Values (k8s)
         run: |
           deployment_file="./k8s/deployment.yaml"  # Update with the actual path to your deployment.yaml
           new_image_tag=${{ github.sha }}
-
           # Update the deployment.yaml file with the new image tag
-          sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
-
-      - name: Update Image Tag Values
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:$new_image_tag|" "$deployment_file"
+      - name: Update Image Tag Values (k8s_local)
         run: |
-            deployment_file="./k8s_local/deployment.yaml"  # Update with the actual path to your deployment.yaml
-            new_image_tag=${{ github.sha }}
-  
-            # Update the deployment.yaml file with the new image tag
-            sed -i "s|image: dixluwn/ict30001-test:.*|image: dixluwn/ict30001-test:$new_image_tag|" "$deployment_file"
-
+          deployment_file="./k8s_local/deployment.yaml"  # Update with the actual path to your deployment.yaml
+          new_image_tag=${{ github.sha }}
+          # Update the deployment.yaml file with the new image tag
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-tn-coffee:$new_image_tag|" "$deployment_file"
       - name: Commit the changes made
-        run: | 
+        run: |
+          git config --global user.name "${{ secrets.GIT_USER_NAME }}"
+          git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git commit -am "Updating image tag in deployment.yaml"
+          git push
+
+  update-manifest-mexer:
+    runs-on: ubuntu-latest
+    needs: build-image-mexer
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Update Image Tag Values (k8s-tn)
+        run: |
+          deployment_file="./k8s-tn/deployment.yaml"  # Update with the actual path to your deployment.yaml
+          new_image_tag=${{ github.sha }}
+          # Update the deployment.yaml file with the new image tag
+          sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:.*|image: ${{ secrets.DOCKER_USERNAME }}/ict30001-mexer:$new_image_tag|" "$deployment_file"
+      - name: Commit the changes made
+        run: |
           git config --global user.name "${{ secrets.GIT_USER_NAME }}"
           git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
           git commit -am "Updating image tag in deployment.yaml"
