@@ -98,7 +98,7 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Update Image Tag Values (k8s-tn)
+      - name: Update Image Tag Values (k8s)
         run: |
           deployment_file="./k8s/deployment.yaml"  # Update with the actual path to your deployment.yaml
           new_image_tag=${{ github.sha }}
